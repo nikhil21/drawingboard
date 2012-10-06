@@ -1,0 +1,17 @@
+#build artifacts
+build/
+target/
+
+# external libraries
+libs/
+
+# project files
+.idea/
+*.iml
+.project
+.classpath
+.settings
+
+# local git configuration
+.gitattributes
+
