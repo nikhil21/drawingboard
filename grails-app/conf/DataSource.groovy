@@ -13,8 +13,10 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-            url = "jdbc:hsqldb:mem:devDB"
+            dbCreate = "create" // one of 'create', 'create-drop','update'
+            url = "jdbc:mysql://localhost/drawingboard?useUnicode=yes&characterEncoding=UTF-8"
+            username="root"
+            password="root123"
         }
     }
     test {
