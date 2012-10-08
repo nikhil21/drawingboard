@@ -4,8 +4,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>genesis - Free CSS Template by spyka Webmaster</title>
     <link rel="stylesheet" href="${resource(dir: 'css',file:'styles.css')}" type="text/css" />
+    <g:javascript library="jquery" plugin="jquery"/>
+    <link rel="stylesheet" href="${resource(dir: 'css',file:'jquery-ui-1.8.24.custom.css')}" type="text/css" />
+    <script type="text/javascript" src="${resource(dir: 'js',file: 'jquery-ui-1.8.24.custom.min.js')}"></script>
+    <link rel="stylesheet" href="${resource(dir: 'css',file:'jquery.ui.theme.css')}" type="text/css" />
     <g:layoutHead />
-    <g:javascript library="application" />
 </head>
 <body>
 <div id="container">
