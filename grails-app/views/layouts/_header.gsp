@@ -13,25 +13,20 @@
 </div>
 <div id="nav">
     <ul>
-        %{--<li class="start"><a href="index.html">Home</a></li>
-        <li><a href="examples.html">Examples</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Solutions</a></li>
-        <li class="end"><a href="#">Contact</a></li>--}%
-        <li class="start">
+       <li class="start">
+           <g:link uri="/">Home</g:link>
+        </li>
+        <li>
             <g:link controller="scheduler" action="main" >Shaping</g:link>
         </li>
         <li>
-            <g:link controller="department" action="list" >Department</g:link>
+            <g:link controller="scheduler" action="main" >Manufacturing</g:link>
         </li>
         <li>
-            <g:link controller="queue" action="list" >Queue</g:link>
-        </li>
-        <li>
-            <g:link controller="machine" action="list" >Machine</g:link>
+            <g:link controller="scheduler" action="main" >Logistics</g:link>
         </li>
         <li class="end">
-            <g:link controller="scheduler" action="main" >Shaping</g:link>
+            <g:link controller="scheduler" action="main" >Statistics</g:link>
         </li>
     </ul>
 </div>

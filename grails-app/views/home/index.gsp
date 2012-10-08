@@ -15,6 +15,6 @@
 </head>
 <body>
 
-    <g:link controller="" action=""
+    %{--<g:link controller="" action=""--}%
 </body>
 </html>
