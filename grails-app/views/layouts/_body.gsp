@@ -42,9 +42,21 @@
             <li>
                 <h3>Navigate</h3>
                 <ul class="blocklist">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="examples.html">Examples</a></li>
-                    <li><a href="#">Products</a></li>
+                    <li>
+                        <g:link controller="department" action="list">
+                            <g:message code="label.department" default="Department" />
+                        </g:link>
+                    </li>
+                    <li>
+                        <g:link controller="machine" action="list">
+                            <g:message code="label.machine" default="Machine" />
+                        </g:link>
+                    </li>
+                    <li>
+                        <g:link controller="queue" action="list">
+                            <g:message code="label.queue" default="Queue" />
+                        </g:link>
+                    </li>
                     <li><a href="#">Solutions</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>

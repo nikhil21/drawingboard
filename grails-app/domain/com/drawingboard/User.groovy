@@ -36,7 +36,7 @@ class User {
 		}
 	}
 
-	protected void encodePassword() {
+	/*protected void encodePassword() {
 		password = springSecurityService.encodePassword(password)
-	}
+	}*/
 }

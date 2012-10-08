@@ -2,7 +2,7 @@ package com.drawingboard
 
 import grails.test.*
 
-class ShapingControllerTests extends ControllerUnitTestCase {
+class SchedulerControllerTests extends ControllerUnitTestCase {
     protected void setUp() {
         super.setUp()
     }

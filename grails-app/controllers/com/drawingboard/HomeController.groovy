@@ -1,10 +1,7 @@
 package com.drawingboard
 
-class ShapingController {
+class HomeController {
 
     def index = { }
-    def main = {
 
-
-    }
 }

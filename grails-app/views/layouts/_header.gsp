@@ -19,7 +19,7 @@
         <li><a href="#">Solutions</a></li>
         <li class="end"><a href="#">Contact</a></li>--}%
         <li class="start">
-            <g:link controller="shaping" action="main" >Shaping</g:link>
+            <g:link controller="scheduler" action="main" >Shaping</g:link>
         </li>
         <li>
             <g:link controller="department" action="list" >Department</g:link>
@@ -31,7 +31,7 @@
             <g:link controller="machine" action="list" >Machine</g:link>
         </li>
         <li class="end">
-            <g:link controller="shaping" action="main" >Shaping</g:link>
+            <g:link controller="scheduler" action="main" >Shaping</g:link>
         </li>
     </ul>
 </div>
