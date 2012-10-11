@@ -2,13 +2,18 @@ package com.drawingboard
 
 class Department {
 
-    List<Machine> machines
     String name
 
     static constraints = {
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
+
+
     static hasMany = [machines: Machine]
 
-    static belongsTo = [user: User]
 }

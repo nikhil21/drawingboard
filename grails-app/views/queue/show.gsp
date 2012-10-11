@@ -44,16 +44,16 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="queue.pin.label" default="Pin" /></td>
+                            <td valign="top" class="name"><g:message code="queue.order.label" default="Order" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: queueInstance, field: "pin")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: queueInstance, field: "order")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="queue.queueType.label" default="Queue Type" /></td>
+                            <td valign="top" class="name"><g:message code="queue.pin.label" default="Pin" /></td>
                             
-                            <td valign="top" class="value">${queueInstance?.queueType?.encodeAsHTML()}</td>
+                            <td valign="top" class="value">${fieldValue(bean: queueInstance, field: "pin")}</td>
                             
                         </tr>
                     

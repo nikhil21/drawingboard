@@ -5,5 +5,6 @@
     </head>
     <body>
     <g:render template="/layouts/body" />
+    <g:render template="/layouts/footer" />
     </body>
 </html>

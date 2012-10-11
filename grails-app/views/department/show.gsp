@@ -49,13 +49,6 @@
                             
                         </tr>
                     
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="department.user.label" default="User" /></td>
-                            
-                            <td valign="top" class="value"><g:link controller="user" action="show" id="${departmentInstance?.user?.id}">${departmentInstance?.user?.encodeAsHTML()}</g:link></td>
-                            
-                        </tr>
-                    
                     </tbody>
                 </table>
             </div>

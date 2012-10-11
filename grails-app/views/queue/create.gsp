@@ -48,19 +48,19 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="pin"><g:message code="queue.pin.label" default="Pin" /></label>
+                                    <label for="order"><g:message code="queue.order.label" default="Order" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: queueInstance, field: 'pin', 'errors')}">
-                                    <g:textField name="pin" value="${queueInstance?.pin}" />
+                                <td valign="top" class="value ${hasErrors(bean: queueInstance, field: 'order', 'errors')}">
+                                    <g:textField name="order" value="${fieldValue(bean: queueInstance, field: 'order')}" />
                                 </td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="queueType"><g:message code="queue.queueType.label" default="Queue Type" /></label>
+                                    <label for="pin"><g:message code="queue.pin.label" default="Pin" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: queueInstance, field: 'queueType', 'errors')}">
-                                    <g:select name="queueType" from="${com.drawingboard.ENUM.QueueType?.values()}" keys="${com.drawingboard.ENUM.QueueType?.values()*.name()}" value="${queueInstance?.queueType?.name()}"  />
+                                <td valign="top" class="value ${hasErrors(bean: queueInstance, field: 'pin', 'errors')}">
+                                    <g:textField name="pin" value="${queueInstance?.pin}" />
                                 </td>
                             </tr>
                         

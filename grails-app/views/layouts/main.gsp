@@ -14,7 +14,7 @@
 <div id="container">
     <g:render template="/layouts/header" />
     <g:layoutBody/>
-    <g:render template="/layouts/footer" />
+    %{--<g:render template="/layouts/footer" />--}%
 </div>
 </body>
 </html>

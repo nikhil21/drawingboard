@@ -26,8 +26,6 @@
                         
                             <g:sortableColumn property="name" title="${message(code: 'department.name.label', default: 'Name')}" />
                         
-                            <th><g:message code="department.user.label" default="User" /></th>
-                        
                         </tr>
                     </thead>
                     <tbody>
@@ -37,8 +35,6 @@
                             <td><g:link action="show" id="${departmentInstance.id}">${fieldValue(bean: departmentInstance, field: "id")}</g:link></td>
                         
                             <td>${fieldValue(bean: departmentInstance, field: "name")}</td>
-                        
-                            <td>${fieldValue(bean: departmentInstance, field: "user")}</td>
                         
                         </tr>
                     </g:each>

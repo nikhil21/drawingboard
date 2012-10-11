@@ -58,7 +58,7 @@ class QueueController {
             if (params.version) {
                 def version = params.version.toLong()
                 if (queueInstance.version > version) {
-                    
+
                     queueInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'queue.label', default: 'Queue')] as Object[], "Another user has updated this Queue while you were editing")
                     render(view: "edit", model: [queueInstance: queueInstance])
                     return
