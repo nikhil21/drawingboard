@@ -48,19 +48,19 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="order"><g:message code="queue.order.label" default="Order" /></label>
+                                    <label for="pin"><g:message code="queue.pin.label" default="Pin" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: queueInstance, field: 'order', 'errors')}">
-                                    <g:textField name="order" value="${fieldValue(bean: queueInstance, field: 'order')}" />
+                                <td valign="top" class="value ${hasErrors(bean: queueInstance, field: 'pin', 'errors')}">
+                                    <g:textField name="pin" value="${queueInstance?.pin}" />
                                 </td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="pin"><g:message code="queue.pin.label" default="Pin" /></label>
+                                    <label for="queueOrder"><g:message code="queue.queueOrder.label" default="Queue Order" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: queueInstance, field: 'pin', 'errors')}">
-                                    <g:textField name="pin" value="${queueInstance?.pin}" />
+                                <td valign="top" class="value ${hasErrors(bean: queueInstance, field: 'queueOrder', 'errors')}">
+                                    <g:textField name="queueOrder" value="${fieldValue(bean: queueInstance, field: 'queueOrder')}" />
                                 </td>
                             </tr>
                         

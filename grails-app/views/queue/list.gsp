@@ -28,9 +28,9 @@
                         
                             <th><g:message code="queue.machine.label" default="Machine" /></th>
                         
-                            <g:sortableColumn property="order" title="${message(code: 'queue.order.label', default: 'Order')}" />
-                        
                             <g:sortableColumn property="pin" title="${message(code: 'queue.pin.label', default: 'Pin')}" />
+                        
+                            <g:sortableColumn property="queueOrder" title="${message(code: 'queue.queueOrder.label', default: 'Queue Order')}" />
                         
                         </tr>
                     </thead>
@@ -44,9 +44,9 @@
                         
                             <td>${fieldValue(bean: queueInstance, field: "machine")}</td>
                         
-                            <td>${fieldValue(bean: queueInstance, field: "order")}</td>
-                        
                             <td>${fieldValue(bean: queueInstance, field: "pin")}</td>
+                        
+                            <td>${fieldValue(bean: queueInstance, field: "queueOrder")}</td>
                         
                         </tr>
                     </g:each>

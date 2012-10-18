@@ -17,7 +17,7 @@
            <g:link uri="/">Home</g:link>
         </li>
         <li>
-            <g:link controller="scheduler" action="main" >Shaping</g:link>
+            <g:link controller="scheduler" action="main" >Enter Program</g:link>
         </li>
         <li>
             <g:link controller="scheduler" action="main" >Manufacturing</g:link>

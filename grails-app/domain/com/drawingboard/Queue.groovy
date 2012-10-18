@@ -7,7 +7,7 @@ class Queue {
     String jobNo
     String pin
 //    QueueType queueType
-    Integer order
+    Integer queueOrder
 
     static constraints = {
     }
