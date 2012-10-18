@@ -11,4 +11,8 @@ class Machine {
 
     static belongsTo = [department: Department]
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }

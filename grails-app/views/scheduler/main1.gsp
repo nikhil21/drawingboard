@@ -44,7 +44,7 @@
         <g:each in="${machineList}" var="machine" status="index">
             %{--${index}--}%
             <g:if test="${index <2}">
-                <div style="float: left;">
+                <div style="float: left;" id="machine-${machine.id}">
                     <div class="title">
                         <Strong>${machine?.name}</Strong>
                     </div>
@@ -52,7 +52,7 @@
                         <g:set var="queueList" value="${com.drawingboard.Queue.findAllByMachine(machine)?.sort {com.drawingboard.Queue qu-> qu.queueOrder }}" />
                         %{--<g:set var="queueList" value="${Queue.findAllByMachine(machine)}" />--}%
                         <g:each in="${queueList}" var="queue" status="queueIdx">
-                            <div class="portlet">
+                            <div class="portlet" id="queue-${queue.id}">
                                 <g:if test="${queueIdx == 0}">
                                     <div class="portlet-header">WIP</div>
                                     <div class="portlet-content">${queue?.jobNo}</div>
@@ -113,14 +113,14 @@
         <g:each in="${machineList}" var="machine" status="index">
         %{--${index}--}%
             <g:if test="${index >=2}">
-                <div style="float: left;">
+                <div style="float: left;" id="machine-${machine.id}">
                     <div class="title">
                         <Strong>${machine?.name}</Strong>
                     </div>
                     <div class="column">
                         <g:set var="queueList" value="${com.drawingboard.Queue.findAllByMachine(machine)?.sort {com.drawingboard.Queue qu-> qu.queueOrder }}" />
                         <g:each in="${queueList}" var="queue" status="queueIdx">
-                            <div class="portlet">
+                            <div class="portlet" id="queue-${queue.id}">
                                 <g:if test="${queueIdx == 0}">
                                     <div class="portlet-header">WIP</div>
                                     <div class="portlet-content">${queue?.jobNo}</div>
@@ -140,7 +140,18 @@
 
     </div>
 </div>
-
+<script type="text/javascript">
+    $('[id^="machine-"]').each(function(){
+        var machineId = this.id;
+        var queueId = "";
+//console.debug(this);
+        console.debug(machineId);
+        if($('#'+machineId).children('div.column').children('div[id^="queue-"]')){
+            queueId = $('#'+machineId).children('div.column').children('div[id^="queue-"]');
+            console.debug(queueId);
+        }
+    });
+</script>
 <div class="clear"></div>
 </body>
 </html>

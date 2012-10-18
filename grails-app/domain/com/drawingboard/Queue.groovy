@@ -14,4 +14,8 @@ class Queue {
 
     static belongsTo = [machine: Machine]
 
+    @Override
+    public String toString() {
+        return jobNo;
+    }
 }
