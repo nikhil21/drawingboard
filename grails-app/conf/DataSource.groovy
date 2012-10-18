@@ -16,7 +16,7 @@ environments {
             dbCreate = "update" // one of 'create', 'create-drop','update'
             url = "jdbc:mysql://localhost/drawingboard?useUnicode=yes&characterEncoding=UTF-8"
             username="root"
-//            password="root123"
+            password="root123"
         }
     }
     test {

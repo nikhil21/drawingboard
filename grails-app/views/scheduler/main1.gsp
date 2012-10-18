@@ -73,40 +73,16 @@
 
         <div style="float: right;">
             <div class="title">
-                <Strong>Future Work</Strong>
+                <Strong>${futureWork?.name}</Strong>
             </div>
             <div class="column">
-
-                %{--<div class="portlet">
-                    <div class="portlet-header">Queue#1</div>
-                    <div class="portlet-content">....</div>
-                </div>
-
-                <div class="portlet">
-                    <div class="portlet-header">Queue#2</div>
-                    <div class="portlet-content">....</div>
-                </div>
-
-                <div class="portlet">
-                    <div class="portlet-header">Queue#3</div>
-                    <div class="portlet-content">....</div>
-                </div>
-
-                <div class="portlet">
-                    <div class="portlet-header">Queue#4</div>
-                    <div class="portlet-content">....</div>
-                </div>
-
-                <div class="portlet">
-                    <div class="portlet-header">Queue#5</div>
-                    <div class="portlet-content">....</div>
-                </div>
-
-                <div class="portlet">
-                    <div class="portlet-header">Queue#6</div>
-                    <div class="portlet-content">....</div>
-                </div>
---}%
+                <g:each in="${com.drawingboard.Queue.findAllByMachine(futureWork)?.sort {com.drawingboard.Queue qu-> qu.queueOrder }}" var="queue" status="queueIdx">
+                    <div class="portlet" id="queue-future-${futureWork.id}-${queue.id}">
+                        <div class="portlet-header">Queue#${queueIdx}</div>
+                        <div class="portlet-content">${queue?.jobNo}</div>
+                        <div class="portlet-content">${queue?.pin}</div>
+                    </div>
+                </g:each>
             </div>
         </div>
 
