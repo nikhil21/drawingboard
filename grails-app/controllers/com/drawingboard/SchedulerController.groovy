@@ -32,4 +32,8 @@ class SchedulerController {
     def test1 = {
        println "------>>"+ Queue.findAllByMachine(Machine.get(2)).sort {Queue qu-> qu.queueOrder }
     }
+
+    def update = {
+        params.each{ println ">>"+it }
+    }
 }
