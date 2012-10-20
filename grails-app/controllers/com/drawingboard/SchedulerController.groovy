@@ -1,6 +1,8 @@
 package com.drawingboard
 
 import com.drawingboard.common.Constants
+import com.drawingboard.server.QueueCO
+import com.drawingboard.server.QueueBL
 
 class SchedulerController {
 
@@ -34,6 +36,18 @@ class SchedulerController {
     }
 
     def update = {
-        params.each{ println ">>"+it }
+        params.each{ println "::"+it }
+        for (int i=1;i<5;i++){
+            QueueCO queue = new QueueCO();
+            println "::::::::"+queue
+            bindData(queue, params["queue-${i}"])
+            println "::::::::"+queue
+
+            QueueBL bl = new QueueBL()
+            bl.saveQueue(queue)
+        }
+
+
+        redirect(actionName:main)
     }
 }

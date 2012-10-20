@@ -16,6 +16,6 @@ class Queue {
 
     @Override
     public String toString() {
-        return jobNo;
+        return "Queue Id :"+id+", JobNo : "+jobNo+", Pin : "+pin+", QueueOrder :"+queueOrder+", Machine [Id : "+machine.id+", name : "+machine+"]";
     }
 }

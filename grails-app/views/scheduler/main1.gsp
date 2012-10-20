@@ -44,6 +44,7 @@
         <g:each in="${machineList}" var="machine" status="index">
             <g:if test="${index <2}">
                 <div style="float: left;" id="machine-${machine.id}">
+                    <g:hiddenField name="machine-${machine.id}.id" id="machine-${machine.id}.id" value="${machine.id}" />
                     <div class="title">
                         <Strong>${machine?.name}</Strong>
                     </div>
@@ -62,47 +63,45 @@
                                     <div class="portlet-content">${queue?.pin}</div>
                                 </g:else>
 
-                                %{--<g:hiddenField name="machine-${index}.queue.id" value="${queue.id}" />--}%
-                                %{--<g:hiddenField name="machine-${index}.queue.jobNo" value="${queue.jobNo}" />--}%
-                                %{--<g:hiddenField name="machine-${index}.queue.pin" value="${queue.pin}" />--}%
-                                %{--<g:hiddenField name="machine-${index}.queue.queueOrder" value="${queue.queueOrder}" />--}%
-                                %{--<g:hiddenField name="machine-${index}.queue.machine.id" value="${queue.machine.id}" />--}%
+                                <g:hiddenField name="queue-${queue.id}.id" id="queue-${queue.id}.id" value="${queue.id}" />
+                                <g:hiddenField name="queue-${queue.id}.jobNo" id="queue-${queue.id}.jobNo" value="${queue.jobNo}" />
+                                <g:hiddenField name="queue-${queue.id}.pin" id="queue-${queue.id}.pin" value="${queue.pin}" />
+                                <g:hiddenField name="queue-${queue.id}.queueOrder" id="queue-${queue.id}.queueOrder" value="${queue.queueOrder}" />
+                                <g:hiddenField name="queue-${queue.id}.machine.id" id="queue-${queue.id}.machine.id" value="${queue.machine.id}" />
                             </div>
                         </g:each>
                     </div>
-                    %{--<g:hiddenField name="machine-${index}.id" value="${machine.id}"/>--}%
-                    %{--<g:hiddenField name="machine-${index}.name" value="${machine.name}"/>--}%
                 </div>
             </g:if>
         </g:each>
 
 
         <div style="float: right;" id="machine-F">
+            <g:hiddenField name="machine-F.id" id="machine-F.id" value="${futureWork.id}" />
             <div class="title">
                 <Strong>${futureWork?.name}</Strong>
             </div>
             <div class="column">
                 <g:each in="${com.drawingboard.Queue.findAllByMachine(futureWork)?.sort {com.drawingboard.Queue qu-> qu.queueOrder }}" var="queue" status="queueIdx">
-                    <div class="portlet" id="queue-future-${futureWork.id}-${queue.id}">
+                    <div class="portlet" id="queue-${queue.id}">
                         <div class="portlet-header">Queue#${queueIdx}</div>
                         <div class="portlet-content">${queue?.jobNo}</div>
                         <div class="portlet-content">${queue?.pin}</div>
 
-                        %{--<g:hiddenField name="machine-F.queue.id" value="${queue.id}" />--}%
-                        %{--<g:hiddenField name="machine-F.queue.jobNo" value="${queue.jobNo}" />--}%
-                        %{--<g:hiddenField name="machine-F.queue.pin" value="${queue.pin}" />--}%
-                        %{--<g:hiddenField name="machine-F.queue.queueOrder" value="${queue.queueOrder}" />--}%
-                        %{--<g:hiddenField name="machine-F.queue.machine.id" value="${queue.machine.id}" />--}%
+                        <g:hiddenField name="queue-${queue.id}.id" id="queue-${queue.id}.id" value="${queue.id}" />
+                        <g:hiddenField name="queue-${queue.id}.jobNo" id="queue-${queue.id}.jobNo" value="${queue.jobNo}" />
+                        <g:hiddenField name="queue-${queue.id}.pin" id="queue-${queue.id}.pin" value="${queue.pin}" />
+                        <g:hiddenField name="queue-${queue.id}.queueOrder" id="queue-${queue.id}.queueOrder" value="${queue.queueOrder}" />
+                        <g:hiddenField name="queue-${queue.id}.machine.id" id="queue-${queue.id}.machine.id" value="${queue.machine.id}" />
                     </div>
                 </g:each>
-                %{--<g:hiddenField name="machine-F.id" value="${futureWork.id}"/>--}%
-                %{--<g:hiddenField name="machine-F.name" value="${futureWork.name}"/>--}%
             </div>
         </div>
 
         <g:each in="${machineList}" var="machine" status="index">
             <g:if test="${index >=2}">
                 <div style="float: left;" id="machine-${machine.id}">
+                    <g:hiddenField name="machine-${machine.id}.id" id="machine-${machine.id}.id" value="${machine.id}" />
                     <div class="title">
                         <Strong>${machine?.name}</Strong>
                     </div>
@@ -120,16 +119,14 @@
                                     <div class="portlet-content">${queue?.jobNo}</div>
                                     <div class="portlet-content">${queue?.pin}</div>
                                 </g:else>
-                                %{--<g:hiddenField name="machine-${index}.queue.id" value="${queue.id}" />--}%
-                                %{--<g:hiddenField name="machine-${index}.queue.jobNo" value="${queue.jobNo}" />--}%
-                                %{--<g:hiddenField name="machine-${index}.queue.pin" value="${queue.pin}" />--}%
-                                %{--<g:hiddenField name="machine-${index}.queue.queueOrder" value="${queue.queueOrder}" />--}%
-                                %{--<g:hiddenField name="machine-${index}.queue.machine.id" value="${queue.machine.id}" />--}%
+                                <g:hiddenField name="queue-${queue.id}.id" id="queue-${queue.id}.id" value="${queue.id}" />
+                                <g:hiddenField name="queue-${queue.id}.jobNo" id="queue-${queue.id}.jobNo" value="${queue.jobNo}" />
+                                <g:hiddenField name="queue-${queue.id}.pin" id="queue-${queue.id}.pin" value="${queue.pin}" />
+                                <g:hiddenField name="queue-${queue.id}.queueOrder" id="queue-${queue.id}.queueOrder" value="${queue.queueOrder}" />
+                                <g:hiddenField name="queue-${queue.id}.machine.id" id="queue-${queue.id}.machine.id" value="${queue.machine.id}" />
                             </div>
                         </g:each>
                     </div>
-                    %{--<g:hiddenField name="machine-${index}.id" value="${machine.id}"/>--}%
-                    %{--<g:hiddenField name="machine-${index}.name" value="${machine.name}"/>--}%
                 </div>
             </g:if>
         </g:each>
@@ -144,17 +141,16 @@
 <script type="text/javascript">
     var $form = $('#form');
     $form.submit(function() {
-        alert("Submitting");
         $('div[id^="machine-"]').each(function(){
-            var machineId = this.id;
+            var divMachineId = this.id;
+            var machineId = $('input[name="'+divMachineId+'.id"]').attr('value');
             var queueId = "";
             var $queue;
-            console.debug(machineId);
-            $('#'+machineId).children('div.column').children('div[id^="queue-"]').each(function(){
-                $queue = $('#'+machineId).children('div.column').children('div[id^="queue-"]');
+            $('#'+divMachineId).children('div.column').children('div[id^="queue-"]').each(function(index){
+                $queue = $(this);
                 queueId = $queue.attr("id");
-                console.debug(">>"+queueId);
-                //alert(machineId+">>"+queueId);
+                $('input[name="'+queueId+'.machine.id"]').attr('value',machineId);
+                $('input[name="'+queueId+'.queueOrder"]').attr('value',index);
             });
         });
     });
