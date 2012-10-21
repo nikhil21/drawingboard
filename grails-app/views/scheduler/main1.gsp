@@ -41,6 +41,7 @@
 <div id="body">
     <div class="demo">
         <g:form id="form" name="form" controller="scheduler" action="update" >
+        <g:hiddenField name="departmentID" value="${departmentID}" />
         <g:each in="${machineList}" var="machine" status="index">
             <g:if test="${index <2}">
                 <div style="float: left;" id="machine-${machine.id}">
@@ -54,18 +55,24 @@
                             <div class="portlet" id="queue-${queue.id}">
                                 <g:if test="${queueIdx == 0}">
                                     <div class="portlet-header">WIP</div>
-                                    <div class="portlet-content">${queue?.jobNo}</div>
-                                    <div class="portlet-content">${queue?.pin}</div>
+                                    <div class="portlet-content">
+                                        JobNo : <g:textField name="queue-${queue.id}.jobNo" value="${queue.jobNo}" style="width: 60%"/>
+                                    </div>
+                                    <div class="portlet-content">
+                                        Pin : <g:textField name="queue-${queue.id}.pin" value="${queue.pin}" style="width: 72%"/>
+                                    </div>
                                 </g:if>
                                 <g:else>
                                     <div class="portlet-header">Queue#${queueIdx}</div>
-                                    <div class="portlet-content">${queue?.jobNo}</div>
-                                    <div class="portlet-content">${queue?.pin}</div>
+                                    <div class="portlet-content">
+                                        JobNo : <g:textField name="queue-${queue.id}.jobNo" value="${queue.jobNo}" style="width: 60%"/>
+                                    </div>
+                                    <div class="portlet-content">
+                                        Pin : <g:textField name="queue-${queue.id}.pin" value="${queue.pin}" style="width: 72%"/>
+                                    </div>
                                 </g:else>
 
                                 <g:hiddenField name="queue-${queue.id}.id" id="queue-${queue.id}.id" value="${queue.id}" />
-                                <g:hiddenField name="queue-${queue.id}.jobNo" id="queue-${queue.id}.jobNo" value="${queue.jobNo}" />
-                                <g:hiddenField name="queue-${queue.id}.pin" id="queue-${queue.id}.pin" value="${queue.pin}" />
                                 <g:hiddenField name="queue-${queue.id}.queueOrder" id="queue-${queue.id}.queueOrder" value="${queue.queueOrder}" />
                                 <g:hiddenField name="queue-${queue.id}.machine.id" id="queue-${queue.id}.machine.id" value="${queue.machine.id}" />
                             </div>
@@ -85,12 +92,14 @@
                 <g:each in="${com.drawingboard.Queue.findAllByMachine(futureWork)?.sort {com.drawingboard.Queue qu-> qu.queueOrder }}" var="queue" status="queueIdx">
                     <div class="portlet" id="queue-${queue.id}">
                         <div class="portlet-header">Queue#${queueIdx}</div>
-                        <div class="portlet-content">${queue?.jobNo}</div>
-                        <div class="portlet-content">${queue?.pin}</div>
+                        <div class="portlet-content">
+                            JobNo : <g:textField name="queue-${queue.id}.jobNo" value="${queue.jobNo}" style="width: 60%"/>
+                        </div>
+                        <div class="portlet-content">
+                            Pin : <g:textField name="queue-${queue.id}.pin" value="${queue.pin}" style="width: 72%"/>
+                        </div>
 
                         <g:hiddenField name="queue-${queue.id}.id" id="queue-${queue.id}.id" value="${queue.id}" />
-                        <g:hiddenField name="queue-${queue.id}.jobNo" id="queue-${queue.id}.jobNo" value="${queue.jobNo}" />
-                        <g:hiddenField name="queue-${queue.id}.pin" id="queue-${queue.id}.pin" value="${queue.pin}" />
                         <g:hiddenField name="queue-${queue.id}.queueOrder" id="queue-${queue.id}.queueOrder" value="${queue.queueOrder}" />
                         <g:hiddenField name="queue-${queue.id}.machine.id" id="queue-${queue.id}.machine.id" value="${queue.machine.id}" />
                     </div>
@@ -111,17 +120,23 @@
                             <div class="portlet" id="queue-${queue.id}">
                                 <g:if test="${queueIdx == 0}">
                                     <div class="portlet-header">WIP</div>
-                                    <div class="portlet-content">${queue?.jobNo}</div>
-                                    <div class="portlet-content">${queue?.pin}</div>
+                                    <div class="portlet-content">
+                                        JobNo : <g:textField name="queue-${queue.id}.jobNo" value="${queue.jobNo}" style="width: 60%"/>
+                                    </div>
+                                    <div class="portlet-content">
+                                        Pin : <g:textField name="queue-${queue.id}.pin" value="${queue.pin}" style="width: 72%"/>
+                                    </div>
                                 </g:if>
                                 <g:else>
                                     <div class="portlet-header">Queue#${queueIdx}</div>
-                                    <div class="portlet-content">${queue?.jobNo}</div>
-                                    <div class="portlet-content">${queue?.pin}</div>
+                                    <div class="portlet-content">
+                                        JobNo : <g:textField name="queue-${queue.id}.jobNo" value="${queue.jobNo}" style="width: 60%"/>
+                                    </div>
+                                    <div class="portlet-content">
+                                        Pin : <g:textField name="queue-${queue.id}.pin" value="${queue.pin}" style="width: 72%"/>
+                                    </div>
                                 </g:else>
                                 <g:hiddenField name="queue-${queue.id}.id" id="queue-${queue.id}.id" value="${queue.id}" />
-                                <g:hiddenField name="queue-${queue.id}.jobNo" id="queue-${queue.id}.jobNo" value="${queue.jobNo}" />
-                                <g:hiddenField name="queue-${queue.id}.pin" id="queue-${queue.id}.pin" value="${queue.pin}" />
                                 <g:hiddenField name="queue-${queue.id}.queueOrder" id="queue-${queue.id}.queueOrder" value="${queue.queueOrder}" />
                                 <g:hiddenField name="queue-${queue.id}.machine.id" id="queue-${queue.id}.machine.id" value="${queue.machine.id}" />
                             </div>

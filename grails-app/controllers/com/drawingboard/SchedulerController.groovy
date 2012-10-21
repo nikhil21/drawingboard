@@ -3,6 +3,7 @@ package com.drawingboard
 import com.drawingboard.common.Constants
 import com.drawingboard.server.QueueCO
 import com.drawingboard.server.QueueBL
+import org.apache.commons.beanutils.converters.IntegerArrayConverter
 
 class SchedulerController {
 
@@ -21,7 +22,7 @@ class SchedulerController {
             futureWork = Machine.findByName(Constants.FUTRE_WORK_MACHINE_NAME)
         }
 
-        render(view:  'main1', model: [departmentList: departmentList, machineList: machineList, futureWork: futureWork ])
+        render(view:  'main1', model: [departmentID:currentDepartment.id,departmentList: departmentList, machineList: machineList, futureWork: futureWork ])
 
     }
 
@@ -37,17 +38,21 @@ class SchedulerController {
 
     def update = {
         params.each{ println "::"+it }
-        for (int i=1;i<5;i++){
-            QueueCO queue = new QueueCO();
-            println "::::::::"+queue
-            bindData(queue, params["queue-${i}"])
-            println "::::::::"+queue
 
-            QueueBL bl = new QueueBL()
-            bl.saveQueue(queue)
+        //todo : to find the queue count
+        Integer count = Machine.countByDepartment(Department.get(params.int('departmentID')))
+        for (int i=1;i<count;i++){
+            QueueCO queue = new QueueCO();
+            println "::::before binding::::"+queue
+            bindData(queue, params["queue-${i}"])
+            println "::::after binding::::"+queue
+
+            if(queue.id!=null){
+                QueueBL bl = new QueueBL()
+                bl.saveQueue(queue)
+            }
         }
 
-
-        redirect(actionName:main)
+        redirect(action:'main', params:[departmentID:params.int('departmentID')])
     }
 }
