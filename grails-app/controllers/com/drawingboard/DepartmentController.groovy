@@ -26,7 +26,7 @@ class DepartmentController {
         if (departmentInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'department.label', default: 'Department'), departmentInstance.id])}"
             // create one Machine with the name of Future Work For Default
-            new Machine(name: Constants.FUTRE_WORK_MACHINE_NAME, department: departmentInstance).save(flush: true)
+            new Machine(name: Constants.FUTRE_WORK_MACHINE_NAME+"_"+departmentInstance.name, department: departmentInstance).save(flush: true)
             redirect(action: "show", id: departmentInstance.id)
         }
         else {

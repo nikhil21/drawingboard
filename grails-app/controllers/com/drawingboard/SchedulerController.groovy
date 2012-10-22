@@ -17,9 +17,9 @@ class SchedulerController {
         // if there is a current department then only try to get the Machines
         if (currentDepartment) {
             // if no id is passed, default to the first department
-            machineList = Machine.findAllByDepartmentAndNameNotEqual(currentDepartment, Constants.FUTRE_WORK_MACHINE_NAME)
+            machineList = Machine.findAllByDepartmentAndNameNotEqual(currentDepartment, Constants.FUTRE_WORK_MACHINE_NAME+"_"+currentDepartment.name)
             // pass the Future Work Machine explicitly
-            futureWork = Machine.findByName(Constants.FUTRE_WORK_MACHINE_NAME)
+            futureWork = Machine.findByName(Constants.FUTRE_WORK_MACHINE_NAME+"_"+currentDepartment.name)
         }
 
         render(view:  'main1', model: [departmentID:currentDepartment.id,departmentList: departmentList, machineList: machineList, futureWork: futureWork ])
@@ -39,17 +39,16 @@ class SchedulerController {
     def update = {
         params.each{ println "::"+it }
 
-        //todo : to find the queue count
-        Integer count = Machine.countByDepartment(Department.get(params.int('departmentID')))
-        for (int i=1;i<count;i++){
-            QueueCO queue = new QueueCO();
-            println "::::before binding::::"+queue
-            bindData(queue, params["queue-${i}"])
-            println "::::after binding::::"+queue
+        List<Queue> queueList = Queue.findAllByMachineInList(Machine.findAllByDepartment(Department.get(params.int('departmentID'))))
+        queueList.each{ Queue queue ->
+            QueueCO queueCO = new QueueCO();
+            println "::::before binding::::"+queueCO
+            bindData(queueCO, params["queue-${queue.id}"])
+            println "::::after binding::::"+queueCO
 
             if(queue.id!=null){
                 QueueBL bl = new QueueBL()
-                bl.saveQueue(queue)
+                bl.saveQueue(queueCO)
             }
         }
 

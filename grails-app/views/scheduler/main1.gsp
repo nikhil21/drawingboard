@@ -86,7 +86,7 @@
         <div style="float: right;" id="machine-F">
             <g:hiddenField name="machine-F.id" id="machine-F.id" value="${futureWork.id}" />
             <div class="title">
-                <Strong>${futureWork?.name}</Strong>
+                <Strong><g:message code="label.futureWork" /></Strong>
             </div>
             <div class="column">
                 <g:each in="${com.drawingboard.Queue.findAllByMachine(futureWork)?.sort {com.drawingboard.Queue qu-> qu.queueOrder }}" var="queue" status="queueIdx">
