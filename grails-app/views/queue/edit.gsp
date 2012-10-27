@@ -60,6 +60,15 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                  <label for="quantity"><g:message code="queue.quantity.label" default="Quantity" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: queueInstance, field: 'quantity', 'errors')}">
+                                    <g:textField name="quantity" value="${fieldValue(bean: queueInstance, field: 'quantity')}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                   <label for="queueOrder"><g:message code="queue.queueOrder.label" default="Queue Order" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: queueInstance, field: 'queueOrder', 'errors')}">

@@ -8,6 +8,7 @@ class Queue {
     String pin
 //    QueueType queueType
     Integer queueOrder
+    Integer quantity
 
     static constraints = {
     }
@@ -16,6 +17,6 @@ class Queue {
 
     @Override
     public String toString() {
-        return "Queue Id :"+id+", JobNo : "+jobNo+", Pin : "+pin+", QueueOrder :"+queueOrder+", Machine [Id : "+machine.id+", name : "+machine+"]";
+        return "Queue Id :"+id+", JobNo : "+jobNo+", Pin : "+pin+", QueueOrder : "+queueOrder+", Quantity : "+quantity+", Machine [Id : "+machine.id+", name : "+machine+"]";
     }
 }

@@ -51,6 +51,13 @@
                         </tr>
                     
                         <tr class="prop">
+                            <td valign="top" class="name"><g:message code="queue.quantity.label" default="Quantity" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: queueInstance, field: "quantity")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
                             <td valign="top" class="name"><g:message code="queue.queueOrder.label" default="Queue Order" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: queueInstance, field: "queueOrder")}</td>

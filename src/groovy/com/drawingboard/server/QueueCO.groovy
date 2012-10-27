@@ -16,6 +16,7 @@ class QueueCO {
     String jobNo
     String pin
     Integer queueOrder
+    Integer quantity
     Machine machine
 
 
@@ -32,6 +33,7 @@ class QueueCO {
     }
 
     public String toString() {
+//        return "Queue Id :"+id+", JobNo : "+jobNo+", Pin : "+pin+", QueueOrder : "+queueOrder+", Quantity : "+quantity+", Machine [Id : "+machine.id+", name : "+machine+"]";
         return "QueueCO Id :"+id+", JobNo : "+jobNo+", Pin : "+pin+", QueueOrder :"+queueOrder+", Machine : "+machine;
     }
 }

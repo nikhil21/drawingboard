@@ -61,6 +61,9 @@
                                     <div class="portlet-content">
                                         Pin : <g:textField name="queue-${queue.id}.pin" value="${queue.pin}" style="width: 72%"/>
                                     </div>
+                                    <div class="portlet-content">
+                                        Quantity : <g:textField name="queue-${queue.id}.quantity" value="${queue.quantity}" style="width: 50%"/>
+                                    </div>
                                 </g:if>
                                 <g:else>
                                     <div class="portlet-header">Queue#${queueIdx}</div>
@@ -69,6 +72,9 @@
                                     </div>
                                     <div class="portlet-content">
                                         Pin : <g:textField name="queue-${queue.id}.pin" value="${queue.pin}" style="width: 72%"/>
+                                    </div>
+                                    <div class="portlet-content">
+                                        Quantity : <g:textField name="queue-${queue.id}.quantity" value="${queue.quantity}" style="width: 50%"/>
                                     </div>
                                 </g:else>
 
@@ -98,6 +104,9 @@
                         <div class="portlet-content">
                             Pin : <g:textField name="queue-${queue.id}.pin" value="${queue.pin}" style="width: 72%"/>
                         </div>
+                        <div class="portlet-content">
+                            Quantity : <g:textField name="queue-${queue.id}.quantity" value="${queue.quantity}" style="width: 50%"/>
+                        </div>
 
                         <g:hiddenField name="queue-${queue.id}.id" id="queue-${queue.id}.id" value="${queue.id}" />
                         <g:hiddenField name="queue-${queue.id}.queueOrder" id="queue-${queue.id}.queueOrder" value="${queue.queueOrder}" />
@@ -126,6 +135,9 @@
                                     <div class="portlet-content">
                                         Pin : <g:textField name="queue-${queue.id}.pin" value="${queue.pin}" style="width: 72%"/>
                                     </div>
+                                    <div class="portlet-content">
+                                        Quantity : <g:textField name="queue-${queue.id}.quantity" value="${queue.quantity}" style="width: 50%"/>
+                                    </div>
                                 </g:if>
                                 <g:else>
                                     <div class="portlet-header">Queue#${queueIdx}</div>
@@ -134,6 +146,9 @@
                                     </div>
                                     <div class="portlet-content">
                                         Pin : <g:textField name="queue-${queue.id}.pin" value="${queue.pin}" style="width: 72%"/>
+                                    </div>
+                                    <div class="portlet-content">
+                                        Quantity : <g:textField name="queue-${queue.id}.quantity" value="${queue.quantity}" style="width: 50%"/>
                                     </div>
                                 </g:else>
                                 <g:hiddenField name="queue-${queue.id}.id" id="queue-${queue.id}.id" value="${queue.id}" />
