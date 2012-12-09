@@ -55,33 +55,13 @@ class SchedulerController {
     }
 
     def update = {
-        params.each{ println "::"+it }
+//        params.each{ println "::"+it }
 
         List<Queue> queueList = Queue.findAllByMachineInList(Machine.findAllByDepartment(Department.get(params.int('departmentID'))))
         queueList.each{ Queue queue ->
             QueueCO queueCO = new QueueCO();
-            println "::::before binding::::"+queueCO
             bindData(queueCO, params["queue-${queue.id}"])
-            println "::::after binding::::"+queueCO
-
-            if(queue.id!=null){
-                QueueBL bl = new QueueBL()
-                bl.saveQueue(queueCO)
-            }
-        }
-
-        redirect(action:'main', params:[departmentID:params.int('departmentID')])
-    }
-
-    def update2 = {
-        params.each{ println "::"+it }
-
-        List<Queue> queueList = Queue.findAllByMachineInList(Machine.findAllByDepartment(Department.get(params.int('departmentID'))))
-        queueList.each{ Queue queue ->
-            QueueCO queueCO = new QueueCO();
-            println "::::before binding::::"+queueCO
-            bindData(queueCO, params["queue-${queue.id}"])
-            println "::::after binding::::"+queueCO
+            println "\n::::after binding::::"+queueCO
 
             if(queue.id!=null){
                 QueueBL bl = new QueueBL()

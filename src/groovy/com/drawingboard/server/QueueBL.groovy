@@ -34,7 +34,7 @@ class QueueBL {
     
     public void saveQueue(Queue queue){
         queue.save(flush: true)
-        System.out.println("Queue saved : "+queue)
+        println("Queue saved : "+queue)
     }
     
     public void saveQueue(QueueCO queueCO){

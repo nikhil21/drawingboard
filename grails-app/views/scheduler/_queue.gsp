@@ -1,8 +1,8 @@
 <div class="portlet" id="queue-${queue.id}">
     <div class="portlet-header">${queue.jobNo}</div>
-    %{--<div class="portlet-content">--}%
-        %{--JobNo : <g:textField name="queue-${queue.id}.jobNo" value="${queue.jobNo}" style="width: 60%"/>--}%
-    %{--</div>--}%
+    <div class="portlet-content">
+        JobNo : <g:textField name="queue-${queue.id}.jobNo" value="${queue.jobNo}" style="width: 60%"/>
+    </div>
     <div class="portlet-content">
         Pin : <g:textField name="queue-${queue.id}.pin" value="${queue.pin}" style="width: 72%"/>
     </div>

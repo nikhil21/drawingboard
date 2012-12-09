@@ -17,9 +17,9 @@
            <g:link uri="/">Home</g:link>
         </li>
         <li>
-            <g:link controller="scheduler" action="main" >Enter Program</g:link>
+            <g:link controller="scheduler" action="main2" >Enter Program</g:link>
         </li>
-        <li>
+        %{--<li>
             <g:link controller="scheduler" action="main" >Manufacturing</g:link>
         </li>
         <li>
@@ -27,6 +27,6 @@
         </li>
         <li class="end">
             <g:link controller="scheduler" action="main" >Statistics</g:link>
-        </li>
+        </li>--}%
     </ul>
 </div>

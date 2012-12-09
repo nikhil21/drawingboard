@@ -61,7 +61,7 @@
 <body>
 <div id="body">
 <div class="demo">
-    <g:form id="form" name="form" controller="scheduler" action="update2" >
+    <g:form id="form" name="form" controller="scheduler" action="update" >
         <g:hiddenField name="departmentID" value="${departmentID}" />
         <g:each in="${machineList}" var="machine" status="index">
             <g:if test="${index <2}">
@@ -194,23 +194,18 @@
 <script type="text/javascript">
     var $form = $('#form');
     $form.submit(function() {
-        alert('trying to print screen.. fingers crossed!!');
         window.print();
-        alert('hows that!!');
 
-        /*$('div[id^="machine-"]').each(function(){
+        $('div[id^="machine-"]').each(function(){
             var divMachineId = this.id;
             var machineId = $('input[name="'+divMachineId+'.id"]').attr('value');
             var queueId = "";
-//            alert("m : "+machineId);
-//            $('#'+divMachineId).children('div.column').children('div[id^="queue-"]').each(function(index){
             $('#'+divMachineId).children('div.content').children('div.column').children('div[id^="queue-"]').each(function(index){
-//                alert("m : "+machineId+", q : "+$(this).attr('id'));
                 queueId = $(this).attr("id");
                 $('input[name="'+queueId+'.machine.id"]').attr('value',machineId);
                 $('input[name="'+queueId+'.queueOrder"]').attr('value',index);
             });
-        });*/
+        });
     });
 </script>
 <div class="clear"></div>
