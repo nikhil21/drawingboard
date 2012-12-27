@@ -16,6 +16,7 @@ class QueueBL {
         queue.setJobNo(queueCO.jobNo)
         queue.setPin(queueCO.pin)
         queue.setQueueOrder(queueCO.queueOrder)
+        queue.setQuantity(queueCO.quantity)
         queue.setMachine(queueCO.machine)
         
         return queue
@@ -27,6 +28,7 @@ class QueueBL {
         queueCO.setJobNo(queueCO.jobNo)
         queueCO.setPin(queueCO.pin)
         queueCO.setQueueOrder(queueCO.queueOrder)
+        queue.setQuantity(queueCO.quantity)
         queueCO.setMachine(queueCO.machine)
 
         return queueCO

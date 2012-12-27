@@ -24,16 +24,16 @@ class QueueCO {
 
     }
 
-    public QueueCO(def id, String jobNo, String pin, Integer queueOrder, Machine machine){
+    public QueueCO(def id, String jobNo, String pin, Integer queueOrder, Unteger quantity, Machine machine){
        setId(id)
        setJobNo(jobNo)
        setPin(pin)
        setQueueOrder(queueOrder)
+       setQuantity(quantity)
        setMachine(machine)
     }
 
     public String toString() {
-//        return "Queue Id :"+id+", JobNo : "+jobNo+", Pin : "+pin+", QueueOrder : "+queueOrder+", Quantity : "+quantity+", Machine [Id : "+machine.id+", name : "+machine+"]";
-        return "QueueCO Id :"+id+", JobNo : "+jobNo+", Pin : "+pin+", QueueOrder :"+queueOrder+", Machine : "+machine;
+        return "Queue Id :"+id+", JobNo : "+jobNo+", Pin : "+pin+", QueueOrder : "+queueOrder+", Quantity : "+quantity+", Machine [Id : "+machine.id+", name : "+machine+"]";
     }
 }
