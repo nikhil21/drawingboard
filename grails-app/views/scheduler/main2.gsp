@@ -123,10 +123,12 @@
             <div class="title">
                 <Strong><g:message code="label.futureWork" /></Strong>
             </div>
-            <div class="column">
-                <g:each in="${com.drawingboard.Queue.findAllByMachine(futureWork)?.sort {com.drawingboard.Queue qu-> qu.queueOrder }}" var="queue" status="queueIdx">
-                    <g:render template="queue" model="[queue:queue]" />
-                </g:each>
+            <div class="content">
+                <div class="column">
+                    <g:each in="${com.drawingboard.Queue.findAllByMachine(futureWork)?.sort {com.drawingboard.Queue qu-> qu.queueOrder }}" var="queue" status="queueIdx">
+                        <g:render template="queue" model="[queue:queue]" />
+                    </g:each>
+                </div>
             </div>
         </div>
 
