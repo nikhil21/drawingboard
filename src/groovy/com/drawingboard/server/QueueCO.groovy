@@ -24,7 +24,7 @@ class QueueCO {
 
     }
 
-    public QueueCO(def id, String jobNo, String pin, Integer queueOrder, Unteger quantity, Machine machine){
+    public QueueCO(def id, String jobNo, String pin, Integer queueOrder, Integer quantity, Machine machine){
        setId(id)
        setJobNo(jobNo)
        setPin(pin)
