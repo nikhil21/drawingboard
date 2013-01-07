@@ -18,7 +18,7 @@
     .ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
     .ui-sortable-placeholder * { visibility: hidden; }
 
-    .title{background-color : #ffffff; border: 10px solid #393939;width: 200px;}
+    .title{background-color : #ffffff; border: 10px solid #393939;width: 200px;color: #000000;}
     .demo{margin-left:100px;}
     </style>
     <script>
@@ -30,15 +30,18 @@
                     $(this).children('div.portlet').each(function(){
                         queueCount++;
                     });
-                    var style = $(this).attr('style');
-                    /*if(queueCount<=0 || queueCount >3){
-                     $(this).attr('style',style == 'padding-bottom:0px;'?'padding-bottom:100px;':'padding-bottom:0px;')
-                     }*/
+
                     if(queueCount<=0){
                         $(this).attr('style','padding-bottom:100px;');
                     } else{
                         $(this).attr('style','padding-bottom:0px;');
                     }
+
+                    if($(this).parents('.box').attr('id')!='machine-F'){
+                       $(this).children('.department').html('');
+                    }
+
+                    $('#submit').click();
                 }
             });
 
@@ -65,8 +68,8 @@
         <g:hiddenField name="departmentID" value="${departmentID}" />
         <g:each in="${machineList}" var="machine" status="index">
             <g:if test="${index <2}">
-                <div id="machine-${machine.id}" class="box">
-                    <g:hiddenField name="machine-${machine.id}.id" id="machine-${machine.id}.id" value="${machine.id}" />
+                <div id="machine-${machine?.id}" class="box">
+                    <g:hiddenField name="machine-${machine?.id}.id" id="machine-${machine?.id}.id" value="${machine?.id}" />
                     <g:set var="queueList" value="${com.drawingboard.Queue.findAllByMachine(machine)?.sort {com.drawingboard.Queue qu-> qu.queueOrder }}" />
                     <div class="title">
                         <Strong>${machine?.name}</Strong>
@@ -88,7 +91,7 @@
                     <div class="content">
                         <g:set var="queue" value="${queueList[1]}" />
                         <div class="title">
-                            <Strong>Queueu 1</Strong>
+                            <Strong>Queue 1</Strong>
                         </div>
                         <g:if test="${queue}" >
                             <div class="column" style="float: none;padding-bottom: 0px;">
@@ -102,7 +105,7 @@
                     <div class="content">
                         <g:set var="queue" value="${queueList[2]}" />
                         <div class="title">
-                            <Strong>Queueu 2</Strong>
+                            <Strong>Queue 2</Strong>
                         </div>
                         <g:if test="${queue}" >
                             <div class="column" style="float: none;padding-bottom: 0px;">
@@ -119,15 +122,18 @@
 
 
         <div id="machine-F" class="box" >
-            <g:hiddenField name="machine-F.id" id="machine-F.id" value="${futureWork.id}" />
+            <g:hiddenField name="machine-F.id" id="machine-F.id" value="${futureWork?.id}" />
             <div class="title">
                 <Strong><g:message code="label.futureWork" /></Strong>
             </div>
             <div class="content">
                 <div class="column">
-                    <g:each in="${com.drawingboard.Queue.findAllByMachine(futureWork)?.sort {com.drawingboard.Queue qu-> qu.queueOrder }}" var="queue" status="queueIdx">
-                        <g:render template="queue" model="[queue:queue]" />
-                    </g:each>
+                    <g:if test="${futureWork!=null}">
+                        <g:each in="${com.drawingboard.Queue.findAllByMachine(futureWork)?.sort {com.drawingboard.Queue qu-> qu.queueOrder }}" var="queue" status="queueIdx">
+                            <g:render template="queue_future_work" model="[queue:queue, departmentList : departmentList, departmentID: departmentID]" />
+                        </g:each>
+                    </g:if>
+
                 </div>
             </div>
         </div>
@@ -135,7 +141,7 @@
         <g:each in="${machineList}" var="machine" status="index">
             <g:if test="${index >=2}">
                 <div id="machine-${machine.id}" class="box">
-                    <g:hiddenField name="machine-${machine.id}.id" id="machine-${machine.id}.id" value="${machine.id}" />
+                    <g:hiddenField name="machine-${machine?.id}.id" id="machine-${machine?.id}.id" value="${machine?.id}" />
                     <g:set var="queueList" value="${com.drawingboard.Queue.findAllByMachine(machine)?.sort {com.drawingboard.Queue qu-> qu.queueOrder }}" />
                     <div class="title">
                         <Strong>${machine?.name}</Strong>
@@ -157,7 +163,7 @@
                     <div class="content">
                         <g:set var="queue" value="${queueList[1]}" />
                         <div class="title">
-                            <Strong>Queueu 1</Strong>
+                            <Strong>Queue 1</Strong>
                         </div>
                         <g:if test="${queue}" >
                             <div class="column" style="float: none;padding-bottom: 0px;">
@@ -171,7 +177,7 @@
                     <div class="content">
                         <g:set var="queue" value="${queueList[2]}" />
                         <div class="title">
-                            <Strong>Queueu 2</Strong>
+                            <Strong>Queue 2</Strong>
                         </div>
                         <g:if test="${queue}" >
                             <div class="column" style="float: none;padding-bottom: 0px;">
@@ -188,7 +194,8 @@
         </div>
         <div class="clear"></div>
         <div>
-            <g:submitButton name="submit" id="submit" value="Update" style="width: 150px;margin-left: 43%;"/>
+            <g:submitButton name="submit" id="submit" value="Update" style="display: none;"/>
+            <g:submitButton onclick="window.print();" name="print" id="print" value="Print" style="width: 150px;margin-left: 43%;"/>
         </div>
 
     </g:form>
@@ -196,8 +203,6 @@
 <script type="text/javascript">
     var $form = $('#form');
     $form.submit(function() {
-        window.print();
-
         $('div[id^="machine-"]').each(function(){
             var divMachineId = this.id;
             var machineId = $('input[name="'+divMachineId+'.id"]').attr('value');

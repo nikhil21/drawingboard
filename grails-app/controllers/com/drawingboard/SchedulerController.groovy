@@ -3,7 +3,6 @@ package com.drawingboard
 import com.drawingboard.common.Constants
 import com.drawingboard.server.QueueCO
 import com.drawingboard.server.QueueBL
-import org.apache.commons.beanutils.converters.IntegerArrayConverter
 
 class SchedulerController {
 
@@ -44,24 +43,29 @@ class SchedulerController {
 
     }
 
-    def test = {
-       def list = Queue.findAllByMachine(Machine.get(1)).sort {Queue queue-> queue.queueOrder }
-        println "list is ${list}"
-
-    }
-
-    def test1 = {
-       println "------>>"+ Queue.findAllByMachine(Machine.get(2)).sort {Queue qu-> qu.queueOrder }
-    }
-
     def update = {
-//        params.each{ println "::"+it }
+        //params.each{ println "::"+it }
 
         List<Queue> queueList = Queue.findAllByMachineInList(Machine.findAllByDepartment(Department.get(params.int('departmentID'))))
+        String departmentID;
+        Department department;
+        Machine machine;
         queueList.each{ Queue queue ->
             QueueCO queueCO = new QueueCO();
             bindData(queueCO, params["queue-${queue.id}"])
-            println "\n::::after binding::::"+queueCO
+
+            if (params["queue_${queue.id}.departmentChange"] && params["queue_${queue.id}.departmentID"]){
+                departmentID = params["queue_${queue.id}.departmentID"];
+                department = Department.findById(Integer.parseInt(departmentID))
+                machine = Machine.findByDepartmentAndNameIlike(department,Constants.FUTRE_WORK_MACHINE_NAME+"%")
+
+                if (machine){
+                    queueCO.machine=machine
+                }
+                println "\n::::after binding1::::"+queueCO
+            } else{
+                println "\n::::after binding2::::"+queueCO
+            }
 
             if(queue.id!=null){
                 QueueBL bl = new QueueBL()
