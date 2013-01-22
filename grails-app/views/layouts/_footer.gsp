@@ -37,6 +37,6 @@
             <div class="clear"></div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; YourSite 2010. Design by <a href="http://www.spyka.net">Free CSS Templates</a> | <a href="http://www.justfreetemplates.com">Free Web Templates</a></p>
+            <p>Free CSS Templates</p>
         </div>
 </div>
