@@ -7,6 +7,7 @@ import com.sun.image.codec.jpeg.JPEGCodec
 import com.sun.image.codec.jpeg.JPEGImageEncoder
 import gui.ava.html.image.generator.HtmlImageGenerator
 import org.apache.commons.io.FileUtils
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
 import javax.imageio.ImageIO
 import javax.imageio.ImageReadParam
@@ -58,8 +59,9 @@ class SchedulerController {
 
     def update = {
         //params.each{ println "::"+it }
-
+        println "In update !!"
         List<Queue> queueList = Queue.findAllByMachineInList(Machine.findAllByDepartment(Department.get(params.int('departmentID'))))
+        Integer depId = params.int('departmentID')
         String departmentID;
         Department department;
         Machine machine;
@@ -86,6 +88,10 @@ class SchedulerController {
             }
         }
 
+        if (depId) {
+            println "There is some department ID, so I will make the image.."
+            makeImage(depId)
+        }
         redirect(action:'main2', params:[departmentID:params.int('departmentID')])
     }
 
@@ -131,6 +137,34 @@ class SchedulerController {
         } catch (Exception e) {
             println "exception is "+e
         }
+    }
+
+    void makeImage(Integer departmentId) {
+//        String url = "\'http://localhost:8080/scheduler/scheduler/main2?departmentID=2\'"
+        String url = "\'http://localhost:8080/scheduler/scheduler/main2?departmentID=${departmentId}\'"
+        String departmentName = Department.findById(departmentId).name
+//        String depName = "\'maths.jpg\'"
+//        String pathToDirectory = grailsApplication.metadata['path.to.directory']
+        String pathToDirectory = ConfigurationHolder.config.path.to.directory
+        String depName = "\'${pathToDirectory+departmentName}.jpg\'"
+
+        println "depname is ${depName}"
+
+        String fileStr = "var page = require('webpage').create();\n" +
+                "            page.open(${url}, function () {\n" +
+                "            page.render(${depName});\n" +
+                "            phantom.exit(); " +
+                "});"
+
+        String fileName = "${departmentName}.js"
+//        FileUtils.writeStringToFile(new File("/home/nikhil/dev/drawingboard/resources/${fileName}"), fileStr)
+        FileUtils.writeStringToFile(new File("${pathToDirectory + fileName}"), fileStr)
+
+        // execute the script
+//        "/home/nikhil/softwares/phantomjs-1.8.1-linux-i686/bin/phantomjs /home/nikhil/dev/drawingboard/resources/${fileName}".execute().waitFor()
+        "/home/nikhil/softwares/phantomjs-1.8.1-linux-i686/bin/phantomjs ${pathToDirectory}${fileName}".execute().waitFor()
+
+        println "done !!"
     }
 
     def test3 = {
