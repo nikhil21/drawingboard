@@ -4,7 +4,6 @@ import com.drawingboard.Queue
 
 /**
  * Created by IntelliJ IDEA.
- * User: shweta
  * Date: 20/10/12
  * Time: 11:30 PM
  * To change this template use File | Settings | File Templates.

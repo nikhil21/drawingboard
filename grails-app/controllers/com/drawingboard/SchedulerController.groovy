@@ -3,6 +3,8 @@ package com.drawingboard
 import com.drawingboard.common.Constants
 import com.drawingboard.server.QueueCO
 import com.drawingboard.server.QueueBL
+import gui.ava.html.image.generator.HtmlImageGenerator
+import org.apache.commons.io.FileUtils
 
 class SchedulerController {
 
@@ -74,5 +76,69 @@ class SchedulerController {
         }
 
         redirect(action:'main2', params:[departmentID:params.int('departmentID')])
+    }
+
+    def test = {
+
+        HtmlImageGenerator imageGenerator = new HtmlImageGenerator();
+        imageGenerator.loadUrl("http://localhost:8080/scheduler/scheduler/main2")
+        imageGenerator.getLinks();
+        imageGenerator.saveAsImage("sos.png");
+
+
+    }
+
+    def test2 = {
+        try {
+
+//        "cd /home/nikhil/softwares/phantomjs-1.8.1-linux-i686/bin".execute().text
+
+        // make a new file with changing contents
+
+            /*
+            a) the url where to hit.
+            b) the image where to put the generated file.
+             */
+
+            /*
+            var page = require('webpage').create();
+            page.open('http://localhost:8080/scheduler/scheduler/main2', function () {
+            page.render('google-nikhil.png');
+            phantom.exit();
+});
+             */
+
+        /*String fileStr = "var page = require('webpage').create();\n" +
+                "            page.open('http://localhost:8080/scheduler/scheduler/main2', function () {\n" +
+                "            page.render('google-nikhil.png');\n" +
+                "            phantom.exit();"
+
+        FileUtils.writeStringToFile(new File("hello2.js"), fileStr)*/
+
+
+        "/home/nikhil/softwares/phantomjs-1.8.1-linux-i686/bin/phantomjs /home/nikhil/softwares/phantomjs-1.8.1-linux-i686/bin/hello2.js".execute().waitFor()
+        } catch (Exception e) {
+            println "exception is "+e
+        }
+    }
+
+    def test3 = {
+        String url = "\'http://localhost:8080/scheduler/scheduler/main2?departmentID=2\'"
+        String depName = "\'maths.jpg\'"
+        String fileStr = "var page = require('webpage').create();\n" +
+                "            page.open(${url}, function () {\n" +
+                "            page.render(${depName});\n" +
+                "            phantom.exit(); " +
+                "});"
+
+        String fileName = "script.js"
+        FileUtils.writeStringToFile(new File("/home/nikhil/dev/drawingboard/resources/${fileName}"), fileStr)
+
+        // execute the script
+
+        "/home/nikhil/softwares/phantomjs-1.8.1-linux-i686/bin/phantomjs /home/nikhil/dev/drawingboard/resources/${fileName}".execute().waitFor()
+
+
+        println "done !!"
     }
 }
