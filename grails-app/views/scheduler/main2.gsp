@@ -194,8 +194,7 @@
         </div>
         <div class="clear"></div>
         <div>
-            %{--<g:submitButton name="submit" id="submit" value="Update" style="width: 150px;margin-left: 43%;" />--}%
-            <g:submitButton name="submit" id="submit" value="Update" style="display: none;"/>
+            <g:submitButton name="submit" id="submit" value="Update" style="width: 150px;margin-left: 43%;" />
             %{--<g:submitButton onclick="window.print();" name="print" id="print" value="Print" style="width: 150px;margin-left: 43%;"/>--}%
         </div>
 
