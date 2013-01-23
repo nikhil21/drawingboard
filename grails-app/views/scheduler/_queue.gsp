@@ -4,7 +4,7 @@
         JobNo : <g:textField name="queue-${queue?.id}.jobNo" value="${queue?.jobNo}" style="width: 60%"/>
     </div>
     <div class="portlet-content">
-        Pin : <g:textField name="queue-${queue?.id}.pin" value="${queue?.pin}" style="width: 72%"/>
+        P/No : <g:textField name="queue-${queue?.id}.pin" value="${queue?.pin}" style="width: 65%"/>
     </div>
     <div class="portlet-content">
         Quantity : <g:textField name="queue-${queue?.id}.quantity" value="${queue?.quantity}" style="width: 50%"/>
