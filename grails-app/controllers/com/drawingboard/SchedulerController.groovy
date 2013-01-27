@@ -104,7 +104,8 @@ class SchedulerController {
 
         println "depname is ${depName}"
 
-        String fileStr = "var page = require('webpage').create();\n" +
+        String fileStr = "var page = require('webpage').create();" +
+                "         page.viewportSize = { width: 1920, height: 1080 }; \n" +
                 "            page.open(${url}, function () {\n" +
                 "            page.render(${depName});\n" +
                 "            phantom.exit(); " +
