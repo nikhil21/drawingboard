@@ -11,7 +11,7 @@
                 <sec:ifAnyGranted roles="ROLE_${department.name.toUpperCase().trim()}">
                     <g:link class="tabs" controller="scheduler" action="main2" params="[departmentID: department.id]" >${department?.name}</g:link>
                 </sec:ifAnyGranted>
-                <h4>${department.name.toUpperCase()}</h4>
+                %{--<h4>${department.name.toUpperCase()}</h4>--}%
             </li>
         </g:each>
     </ul>

@@ -100,4 +100,3 @@ grails.views.javascript.library="jquery"
 // path where all jpg files would be kept in the system
 path.to.directory="/home/nikhil/dev/drawingboard/resources/"
 path.to.phantom="/home/nikhil/softwares/phantomjs-1.8.1-linux-i686/bin/phantomjs"
-'/': ['IS_AUTHENTICATED_FULLY']
