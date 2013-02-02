@@ -17,6 +17,7 @@
         </li>
         <li>
             <g:link controller="scheduler" action="main2" >Enter Program</g:link>
+            %{--<g:link controller="login" action="index" >Enter Program</g:link>--}%
         </li>
         %{--<li>
             <g:link controller="scheduler" action="main" >Manufacturing</g:link>

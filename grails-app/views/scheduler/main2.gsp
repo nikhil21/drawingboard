@@ -120,7 +120,7 @@
             </g:if>
         </g:each>
 
-
+        <g:if test="${departmentID}">
         <div id="machine-F" class="box" >
             <g:hiddenField name="machine-F.id" id="machine-F.id" value="${futureWork?.id}" />
             <div class="title">
@@ -137,7 +137,7 @@
                 </div>
             </div>
         </div>
-
+        </g:if>
         <g:each in="${machineList}" var="machine" status="index">
             <g:if test="${index >=2}">
                 <div id="machine-${machine.id}" class="box">
@@ -194,8 +194,10 @@
         </div>
         <div class="clear"></div>
         <div>
+            <g:if test="${departmentID}">
             <g:submitButton name="submit" id="submit" value="Update" style="width: 150px;margin-left: 43%;" />
             %{--<g:submitButton onclick="window.print();" name="print" id="print" value="Print" style="width: 150px;margin-left: 43%;"/>--}%
+            </g:if>
         </div>
 
     </g:form>

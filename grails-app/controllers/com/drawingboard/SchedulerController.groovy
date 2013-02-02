@@ -5,6 +5,7 @@ import com.drawingboard.server.QueueCO
 import com.drawingboard.server.QueueBL
 import com.sun.image.codec.jpeg.JPEGCodec
 import com.sun.image.codec.jpeg.JPEGImageEncoder
+import grails.plugins.springsecurity.Secured
 import gui.ava.html.image.generator.HtmlImageGenerator
 import org.apache.commons.io.FileUtils
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
@@ -20,6 +21,7 @@ import java.awt.image.BufferedImage
 
 class SchedulerController {
 
+    def springSecurityService
     def index = { }
     def main = {
         println "params are ${params}"
@@ -39,10 +41,14 @@ class SchedulerController {
 
     }
 
+//    @Secured('ROLE_ADMIN')
     def main2 = {
         println "params are ${params}"
+//        println "user has roles ${springSecurityService.currentUser.getAuthorities().authority}"
         List<Department> departmentList = Department.list()
-        Department currentDepartment = Department.get(params.int('departmentID'))?: departmentList[0]
+//        Department currentDepartment = Department.get(params.int('departmentID'))?: departmentList[0]
+//        Department currentDepartment = Department.get(params.int('departmentID'))?: Department.findByName(springSecurityService.currentUser)
+        Department currentDepartment = Department.get(params.int('departmentID'))?: null
         List<Machine> machineList = [];
         Machine futureWork = null
         // if there is a current department then only try to get the Machines
@@ -53,7 +59,7 @@ class SchedulerController {
             futureWork = Machine.findByName(Constants.FUTRE_WORK_MACHINE_NAME+"_"+currentDepartment.name)
         }
 
-        render(view:  'main2', model: [departmentID:currentDepartment.id,departmentList: departmentList, machineList: machineList, futureWork: futureWork ])
+        render(view:  'main2', model: [departmentID:currentDepartment?.id,departmentList: departmentList, machineList: machineList, futureWork: futureWork ])
 
     }
 
