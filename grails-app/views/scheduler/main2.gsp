@@ -66,62 +66,62 @@
 <div class="demo">
     <g:form id="form" name="form" controller="scheduler" action="update" >
         <g:hiddenField name="departmentID" value="${departmentID}" />
-        <g:each in="${machineList}" var="machine" status="index">
-            <g:if test="${index <2}">
-                <div id="machine-${machine?.id}" class="box">
-                    <g:hiddenField name="machine-${machine?.id}.id" id="machine-${machine?.id}.id" value="${machine?.id}" />
-                    <g:set var="queueList" value="${com.drawingboard.Queue.findAllByMachine(machine)?.sort {com.drawingboard.Queue qu-> qu.queueOrder }}" />
-                    <div class="title">
-                        <Strong>${machine?.name}</Strong>
-                    </div>
-                    <div class="content">
-                        <g:set var="queue" value="${queueList[0]}" />
+        <div style="float: left;width: 80%;">
+            <g:each in="${machineList}" var="machine" status="index">
+                    <div id="machine-${machine?.id}" class="box">
+                        <g:hiddenField name="machine-${machine?.id}.id" id="machine-${machine?.id}.id" value="${machine?.id}" />
+                        <g:set var="queueList" value="${com.drawingboard.Queue.findAllByMachine(machine)?.sort {com.drawingboard.Queue qu-> qu.queueOrder }}" />
                         <div class="title">
-                            <Strong>WIP</Strong>
+                            <Strong>${machine?.name}</Strong>
                         </div>
-                        <g:if test="${queue}" >
-                            <div class="column" style="float: none;padding-bottom: 0px;">
-                                <g:render template="queue" model="[queue:queue]" />
+                        <div class="content">
+                            <g:set var="queue" value="${queueList[0]}" />
+                            <div class="title">
+                                <Strong>WIP</Strong>
                             </div>
-                        </g:if>
-                        <g:else>
-                            <div class="column" style="float: none;"></div>
-                        </g:else>
-                    </div>
-                    <div class="content">
-                        <g:set var="queue" value="${queueList[1]}" />
-                        <div class="title">
-                            <Strong>Queue 1</Strong>
+                            <g:if test="${queue}" >
+                                <div class="column" style="float: none;padding-bottom: 0px;">
+                                    <g:render template="queue" model="[queue:queue]" />
+                                </div>
+                            </g:if>
+                            <g:else>
+                                <div class="column" style="float: none;"></div>
+                            </g:else>
                         </div>
-                        <g:if test="${queue}" >
-                            <div class="column" style="float: none;padding-bottom: 0px;">
-                                <g:render template="queue" model="[queue:queue]" />
+                        <div class="content">
+                            <g:set var="queue" value="${queueList[1]}" />
+                            <div class="title">
+                                <Strong>Queue 1</Strong>
                             </div>
-                        </g:if>
-                        <g:else>
-                            <div class="column" style="float: none;"></div>
-                        </g:else>
-                    </div>
-                    <div class="content">
-                        <g:set var="queue" value="${queueList[2]}" />
-                        <div class="title">
-                            <Strong>Queue 2</Strong>
+                            <g:if test="${queue}" >
+                                <div class="column" style="float: none;padding-bottom: 0px;">
+                                    <g:render template="queue" model="[queue:queue]" />
+                                </div>
+                            </g:if>
+                            <g:else>
+                                <div class="column" style="float: none;"></div>
+                            </g:else>
                         </div>
-                        <g:if test="${queue}" >
-                            <div class="column" style="float: none;padding-bottom: 0px;">
-                                <g:render template="queue" model="[queue:queue]" />
+                        <div class="content">
+                            <g:set var="queue" value="${queueList[2]}" />
+                            <div class="title">
+                                <Strong>Queue 2</Strong>
                             </div>
-                        </g:if>
-                        <g:else>
-                            <div class="column" style="float: none;"></div>
-                        </g:else>
+                            <g:if test="${queue}" >
+                                <div class="column" style="float: none;padding-bottom: 0px;">
+                                    <g:render template="queue" model="[queue:queue]" />
+                                </div>
+                            </g:if>
+                            <g:else>
+                                <div class="column" style="float: none;"></div>
+                            </g:else>
+                        </div>
                     </div>
-                </div>
-            </g:if>
-        </g:each>
+            </g:each>
+        </div>
 
         <g:if test="${departmentID}">
-        <div id="machine-F" class="box" >
+        <div id="machine-F" class="box"  style="float: left;">
             <g:hiddenField name="machine-F.id" id="machine-F.id" value="${futureWork?.id}" />
             <div class="title">
                 <Strong><g:message code="label.futureWork" /></Strong>
@@ -138,59 +138,6 @@
             </div>
         </div>
         </g:if>
-        <g:each in="${machineList}" var="machine" status="index">
-            <g:if test="${index >=2}">
-                <div id="machine-${machine.id}" class="box">
-                    <g:hiddenField name="machine-${machine?.id}.id" id="machine-${machine?.id}.id" value="${machine?.id}" />
-                    <g:set var="queueList" value="${com.drawingboard.Queue.findAllByMachine(machine)?.sort {com.drawingboard.Queue qu-> qu.queueOrder }}" />
-                    <div class="title">
-                        <Strong>${machine?.name}</Strong>
-                    </div>
-                    <div class="content">
-                        <g:set var="queue" value="${queueList[0]}" />
-                        <div class="title">
-                            <Strong>WIP</Strong>
-                        </div>
-                        <g:if test="${queue}" >
-                            <div class="column" style="float: none;padding-bottom: 0px;">
-                                <g:render template="queue" model="[queue:queue]" />
-                            </div>
-                        </g:if>
-                        <g:else>
-                            <div class="column" style="float: none;"></div>
-                        </g:else>
-                    </div>
-                    <div class="content">
-                        <g:set var="queue" value="${queueList[1]}" />
-                        <div class="title">
-                            <Strong>Queue 1</Strong>
-                        </div>
-                        <g:if test="${queue}" >
-                            <div class="column" style="float: none;padding-bottom: 0px;">
-                                <g:render template="queue" model="[queue:queue]" />
-                            </div>
-                        </g:if>
-                        <g:else>
-                            <div class="column" style="float: none;"></div>
-                        </g:else>
-                    </div>
-                    <div class="content">
-                        <g:set var="queue" value="${queueList[2]}" />
-                        <div class="title">
-                            <Strong>Queue 2</Strong>
-                        </div>
-                        <g:if test="${queue}" >
-                            <div class="column" style="float: none;padding-bottom: 0px;">
-                                <g:render template="queue" model="[queue:queue]" />
-                            </div>
-                        </g:if>
-                        <g:else>
-                            <div class="column" style="float: none;"></div>
-                        </g:else>
-                    </div>
-                </div>
-            </g:if>
-        </g:each>
         </div>
         <div class="clear"></div>
         <div>
