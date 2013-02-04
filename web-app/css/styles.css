@@ -180,8 +180,8 @@ li ol, li ul {
 
 
 #container {
-	width: 960px;
-	margin: 50px auto;
+	/*width: 960px;*/
+	/*margin: 50px auto;*/
 	padding: 10px;
 	background-color: #fff;
 }
@@ -215,7 +215,7 @@ li ol, li ul {
 
 #nav {
 	height: 45px;
-	width: 960px;
+	/*width: 960px;*/
 	background-color: #222;
 }
 
