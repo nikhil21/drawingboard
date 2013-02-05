@@ -56,8 +56,20 @@
                             <g:message code="label.queue" default="Queue" />
                         </g:link>
                     </li>
-                    <li><a href="#">Solutions</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li>
+                        <sec:ifLoggedIn>
+                            Hello <sec:username/>
+                            <g:link controller="logout" action="index"> Logout</g:link>
+                        </sec:ifLoggedIn>
+                        <sec:ifNotLoggedIn>
+                            <g:link controller="login" action="index">Login
+                            </g:link>
+                        </sec:ifNotLoggedIn>
+                    </li>
+                    <li>
+                        <g:link controller="user">User Mgmt
+                        </g:link>
+                    </li>
                 </ul>
             </li>
 

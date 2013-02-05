@@ -42,6 +42,9 @@ class SchedulerController {
     }
 
 //    @Secured('ROLE_ADMIN')
+    /**
+     * Used When The User Is Logged In
+     */
     def main2 = {
         println "params are ${params}"
 //        println "user has roles ${springSecurityService.currentUser.getAuthorities().authority}"
@@ -60,6 +63,30 @@ class SchedulerController {
         }
 
         render(view:  'main2', model: [departmentID:currentDepartment?.id,departmentList: departmentList, machineList: machineList, futureWork: futureWork ])
+
+    }
+
+    /**
+     * Used when the user is not logged in
+     */
+    def main3 = {
+        println "params are ${params}"
+//        println "user has roles ${springSecurityService.currentUser.getAuthorities().authority}"
+        List<Department> departmentList = Department.list()
+//        Department currentDepartment = Department.get(params.int('departmentID'))?: departmentList[0]
+//        Department currentDepartment = Department.get(params.int('departmentID'))?: Department.findByName(springSecurityService.currentUser)
+        Department currentDepartment = Department.get(params.int('departmentID'))?: departmentList[0]
+        List<Machine> machineList = [];
+        Machine futureWork = null
+        // if there is a current department then only try to get the Machines
+        if (currentDepartment) {
+            // if no id is passed, default to the first department
+            machineList = Machine.findAllByDepartmentAndNameNotEqual(currentDepartment, Constants.FUTRE_WORK_MACHINE_NAME+"_"+currentDepartment.name)
+            // pass the Future Work Machine explicitly
+            futureWork = Machine.findByName(Constants.FUTRE_WORK_MACHINE_NAME+"_"+currentDepartment.name)
+        }
+
+        render(view:  'main3', model: [departmentID:currentDepartment?.id,departmentList: departmentList, machineList: machineList, futureWork: futureWork ])
 
     }
 

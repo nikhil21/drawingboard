@@ -6,7 +6,11 @@
 --%>
 
 <div id="header">
-    <h1><a href="/">genesis</a></h1>
+    <h1>
+        <a href="/">
+            <img src="${resource(dir:'images', file: 'PGI_Logo.png')}" />
+        </a>
+    </h1>
     <h2>your website slogan here</h2>
     <div class="clear"></div>
 </div>
@@ -16,7 +20,12 @@
            <g:link uri="/">Home</g:link>
         </li>
         <li>
-            <g:link controller="scheduler" action="main2" >Enter Program</g:link>
+            <sec:ifLoggedIn>
+                <g:link controller="scheduler" action="main2" >Enter Program</g:link>
+            </sec:ifLoggedIn>
+            <sec:ifNotLoggedIn>
+                <g:link controller="scheduler" action="main3" >Enter Program</g:link>
+            </sec:ifNotLoggedIn>
             %{--<g:link controller="login" action="index" >Enter Program</g:link>--}%
         </li>
         %{--<li>
