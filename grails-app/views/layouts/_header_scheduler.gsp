@@ -5,20 +5,36 @@
             <g:link uri="/">Home</g:link>
         </li>
 
-        <g:each in="${departmentList}" var="department" status="index" >
-            <li>
-                %{--<%=  department = (Department)department %>--}%
-                <sec:ifLoggedIn>
+        %{--<g:each in="${departmentList}" var="department" status="index" >--}%
+        %{--<li>--}%
+        %{--<%=  department = (Department)department %>--}%
+            <sec:ifLoggedIn>
+                %{-- First Display All the ones which the user has full access to --}%
+                <g:each in="${departmentList}" var="department" status="index" >
                     <sec:ifAnyGranted roles="ROLE_${department.name.toUpperCase().trim()}">
-                        <g:link class="tabs" controller="scheduler" action="main2" params="[departmentID: department.id]" >${department?.name}</g:link>
+                        <li>
+                            <g:link class="tabs" controller="scheduler" action="main2" params="[departmentID: department.id]" >${department?.name}</g:link>
+                        </li>
                     </sec:ifAnyGranted>
-                </sec:ifLoggedIn>
+                </g:each>
+                %{-- Now Display All the ones which the user can only see to --}%
+                <g:each in="${departmentList}" var="department" status="index" >
+                    <sec:ifNotGranted roles="ROLE_${department.name.toUpperCase().trim()}">
+                        <li>
+                            <g:link class="tabs" controller="scheduler" action="main3" params="[departmentID: department.id]" >${department?.name}</g:link>
+                        </li>
+                    </sec:ifNotGranted>
+                </g:each>
+            </sec:ifLoggedIn>
 
-                <sec:ifNotLoggedIn>
-                    <g:link class="tabs" controller="scheduler" action="main3" params="[departmentID: department.id]" >${department?.name}</g:link>
-                </sec:ifNotLoggedIn>
+            <sec:ifNotLoggedIn>
+                <g:each in="${departmentList}" var="department" status="index" >
+                    <li>
+                        <g:link class="tabs" controller="scheduler" action="main3" params="[departmentID: department.id]" >${department?.name}</g:link>
+                    </li>
+                </g:each>
+            </sec:ifNotLoggedIn>
                 %{--<h4>${department.name.toUpperCase()}</h4>--}%
-            </li>
-        </g:each>
+        %{--</g:each>--}%
     </ul>
 </div>
