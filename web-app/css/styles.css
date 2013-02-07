@@ -245,6 +245,10 @@ li ol, li ul {
 	text-decoration: none;
 }
 
+#nav ul li a:hover, #nav ul li a.active {
+    background: #c70631;
+}
+
 #nav ul li.start a {
 	border-left: none;
 }

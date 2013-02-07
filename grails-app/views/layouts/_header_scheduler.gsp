@@ -13,7 +13,7 @@
                 <g:each in="${departmentList}" var="department" status="index" >
                     <sec:ifAnyGranted roles="ROLE_${department.name.toUpperCase().trim()}">
                         <li>
-                            <g:link class="tabs" controller="scheduler" action="main2" params="[departmentID: department.id]" >${department?.name}</g:link>
+                            <g:link class="${department.id == departmentID ? 'active' : ''}" controller="scheduler" action="main2" params="[departmentID: department.id]" >${department?.name}</g:link>
                         </li>
                     </sec:ifAnyGranted>
                 </g:each>
@@ -21,7 +21,7 @@
                 <g:each in="${departmentList}" var="department" status="index" >
                     <sec:ifNotGranted roles="ROLE_${department.name.toUpperCase().trim()}">
                         <li>
-                            <g:link class="tabs" controller="scheduler" action="main3" params="[departmentID: department.id]" >${department?.name}</g:link>
+                            <g:link class="${department.id == departmentID ? 'active' : ''}" controller="scheduler" action="main3" params="[departmentID: department.id]" >${department?.name}</g:link>
                         </li>
                     </sec:ifNotGranted>
                 </g:each>
@@ -30,7 +30,7 @@
             <sec:ifNotLoggedIn>
                 <g:each in="${departmentList}" var="department" status="index" >
                     <li>
-                        <g:link class="tabs" controller="scheduler" action="main3" params="[departmentID: department.id]" >${department?.name}</g:link>
+                        <g:link class="${department.id == departmentID ? 'active' : ''}" controller="scheduler" action="main3" params="[departmentID: department.id]" >${department?.name}</g:link>
                     </li>
                 </g:each>
             </sec:ifNotLoggedIn>
