@@ -38,3 +38,6 @@
         %{--</g:each>--}%
     </ul>
 </div>
+<div class="menuPaginateLinks">
+    <g:paginate total="${totalDepartments}" params="[departmentID: departmentID]" max="2"/>
+</div>

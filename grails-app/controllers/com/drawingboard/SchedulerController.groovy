@@ -47,11 +47,10 @@ class SchedulerController {
      */
     def main2 = {
         println "params are ${params}"
-//        println "user has roles ${springSecurityService.currentUser.getAuthorities().authority}"
-        List<Department> departmentList = Department.list()
-//        Department currentDepartment = Department.get(params.int('departmentID'))?: departmentList[0]
-//        Department currentDepartment = Department.get(params.int('departmentID'))?: Department.findByName(springSecurityService.currentUser)
-        Department currentDepartment = Department.get(params.int('departmentID'))?: null
+        params.offset = Math.min(params.max ? params.int('offset') : 0, 100)
+        params.max = Math.min(params.max ? params.int('max') : 2, 100)
+        List<Department> departmentList = Department.list(params)
+        Department currentDepartment = departmentList[0]
         List<Machine> machineList = [];
         Machine futureWork = null
         // if there is a current department then only try to get the Machines
@@ -62,7 +61,7 @@ class SchedulerController {
             futureWork = Machine.findByName(Constants.FUTRE_WORK_MACHINE_NAME+"_"+currentDepartment.name)
         }
 
-        render(view:  'main2', model: [departmentID:currentDepartment?.id,departmentList: departmentList, machineList: machineList, futureWork: futureWork ])
+        render(view:  'main2', model: [departmentID:currentDepartment?.id,departmentList: departmentList, machineList: machineList, futureWork: futureWork , totalDepartments : Department.count()])
 
     }
 
@@ -71,11 +70,10 @@ class SchedulerController {
      */
     def main3 = {
         println "params are ${params}"
-//        println "user has roles ${springSecurityService.currentUser.getAuthorities().authority}"
-        List<Department> departmentList = Department.list()
-//        Department currentDepartment = Department.get(params.int('departmentID'))?: departmentList[0]
-//        Department currentDepartment = Department.get(params.int('departmentID'))?: Department.findByName(springSecurityService.currentUser)
-        Department currentDepartment = Department.get(params.int('departmentID'))?: departmentList[0]
+        params.offset = Math.min(params.max ? params.int('offset') : 0, 100)
+        params.max = Math.min(params.max ? params.int('max') : 2, 100)
+        List<Department> departmentList = Department.list(params)
+        Department currentDepartment =  departmentList[0]
         List<Machine> machineList = [];
         Machine futureWork = null
         // if there is a current department then only try to get the Machines
@@ -86,7 +84,7 @@ class SchedulerController {
             futureWork = Machine.findByName(Constants.FUTRE_WORK_MACHINE_NAME+"_"+currentDepartment.name)
         }
 
-        render(view:  'main3', model: [departmentID:currentDepartment?.id,departmentList: departmentList, machineList: machineList, futureWork: futureWork ])
+        render(view:  'main2', model: [departmentID:currentDepartment?.id,departmentList: departmentList, machineList: machineList, futureWork: futureWork , totalDepartments : Department.count()])
 
     }
 
