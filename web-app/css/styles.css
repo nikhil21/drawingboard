@@ -245,7 +245,7 @@ li ol, li ul {
 	text-decoration: none;
 }
 
-#nav ul li a:hover, #nav ul li a.active {
+#mcts1 a.active {
     background: #c70631;
 }
 

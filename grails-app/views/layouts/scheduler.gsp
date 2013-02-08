@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="${resource(dir: 'css',file:'jquery-ui-1.8.24.custom.css')}" type="text/css" />
     <script type="text/javascript" src="${resource(dir: 'js',file: 'jquery-ui-1.8.24.custom.min.js')}"></script>
     <link rel="stylesheet" href="${resource(dir: 'css',file:'jquery.ui.theme.css')}" type="text/css" />
+    <link rel="stylesheet" href="${resource(dir: 'css',file:'slider.css')}" type="text/css" />
+    %{--<script type="text/javascript" src="${resource(dir: 'js',file: 'jquery-1.7.1.min.js')}"></script>--}%
+    <script type="text/javascript" src="${resource(dir: 'js',file: 'jquery-slider.js')}"></script>
     <g:layoutHead />
 </head>
 <body>
