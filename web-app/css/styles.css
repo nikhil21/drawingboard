@@ -217,8 +217,6 @@ li ol, li ul {
 	height: 45px;
 	/*width: 960px;*/
 	background-color: #222;
-    width: 90%;
-    float: left;
 }
 
 #nav ul {
@@ -266,8 +264,8 @@ li ol, li ul {
 
 #body {
 	background: none;
+	margin:0 auto;
 	padding: 30px 12px 0;
-    margin: 30px auto 0;
 	/*width: 936px;*/
 }
 
@@ -424,22 +422,3 @@ li ol, li ul {
 #footer .footer-bottom p, #footer .footer-bottom p a {
 	color: #666;
 }
-
-.menuPaginateLinks{
-    background-color: #222;
-    width: 10%;
-    float: left;
-    padding-top: 15px;
-    padding-bottom: 10px;
-    height: 20px;
-}
-
-.menuPaginateLinks a, .menuPaginateLinks span{
-    padding: 2px;
-    color: #c70631;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-family: 'Lucida Grande','Lucida Sans Unicode',Geneva,Verdana,Sans-Serif;
-}
-
