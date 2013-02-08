@@ -67,7 +67,7 @@
                         </sec:ifNotLoggedIn>
                     </li>
                     <li>
-                        <g:link controller="user">User Mgmt
+                        <g:link controller="userManagement">User Mgmt
                         </g:link>
                     </li>
                 </ul>
