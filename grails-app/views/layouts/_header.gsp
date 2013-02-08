@@ -11,7 +11,7 @@
             <img src="${resource(dir:'images', file: 'PGI_Logo.png')}" />
         </a>
     </h1>
-    <h2>your website slogan here</h2>
+    %{--<h2>your website slogan here</h2>--}%
     <div class="clear"></div>
 </div>
 <div id="nav">
