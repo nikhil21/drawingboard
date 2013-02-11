@@ -70,10 +70,21 @@ class DepartmentController {
                     return
                 }
             }
+            // fetch the old machine before I can't get to it
+            Machine oldMachine = Machine.findByName(Constants.FUTRE_WORK_MACHINE_NAME+"_"+departmentInstance.name)
             departmentInstance.properties = params
             if (!departmentInstance.hasErrors() && departmentInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'department.label', default: 'Department'), departmentInstance.id])}"
-                redirect(action: "show", id: departmentInstance.id)
+                // need to edit the name of future work machine as well
+                // now maybe if the name has changed I need to edit the name of the future machine as well
+                oldMachine.name = Constants.FUTRE_WORK_MACHINE_NAME+"_"+departmentInstance.name
+                // make sure that the old machine is saved as well
+                if (oldMachine.save(flush: true)) {
+                    flash.message = "${message(code: 'default.updated.message', args: [message(code: 'department.label', default: 'Department'), departmentInstance.id])}"
+                    redirect(action: "show", id: departmentInstance.id)
+                }
+                else {
+                    render(view: "edit", model: [departmentInstance: departmentInstance])
+                }
             }
             else {
                 render(view: "edit", model: [departmentInstance: departmentInstance])
