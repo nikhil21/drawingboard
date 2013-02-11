@@ -5,6 +5,7 @@ class Department {
     String name
 
     static constraints = {
+        name(unique: true)
     }
 
     @Override
