@@ -38,3 +38,10 @@
                     </g:each>
                 </div>
 </sec:ifNotLoggedIn>
+<script type="text/javascript">
+    window.onload = alterCss;
+    function alterCss(){
+        $div = $('#mcts1 > div');
+        $div.css('height', '70%');
+    }
+</script>
