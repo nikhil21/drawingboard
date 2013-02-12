@@ -37,7 +37,7 @@ class SchedulerController {
             futureWork = Machine.findByName(Constants.FUTRE_WORK_MACHINE_NAME+"_"+currentDepartment.name)
         }
 
-        render(view:  'main1', model: [departmentID:currentDepartment.id,departmentList: departmentList, machineList: machineList, futureWork: futureWork ])
+        render(view:  'main1', model: [departmentID:currentDepartment.id,departmentList: departmentList.sort{it.name}, machineList: machineList, futureWork: futureWork ])
 
     }
 
@@ -49,8 +49,6 @@ class SchedulerController {
         println "params are ${params}"
 //        println "user has roles ${springSecurityService.currentUser.getAuthorities().authority}"
         List<Department> departmentList = Department.list()
-//        Department currentDepartment = Department.get(params.int('departmentID'))?: departmentList[0]
-//        Department currentDepartment = Department.get(params.int('departmentID'))?: Department.findByName(springSecurityService.currentUser)
         Department currentDepartment = Department.get(params.int('departmentID'))?: null
         List<Machine> machineList = [];
         Machine futureWork = null
@@ -62,7 +60,7 @@ class SchedulerController {
             futureWork = Machine.findByName(Constants.FUTRE_WORK_MACHINE_NAME+"_"+currentDepartment.name)
         }
 
-        render(view:  'main2', model: [departmentID:currentDepartment?.id,departmentList: departmentList, machineList: machineList, futureWork: futureWork ])
+        render(view:  'main2', model: [departmentID:currentDepartment?.id,departmentList: departmentList.sort{it.name}, machineList: machineList, futureWork: futureWork ])
 
     }
 
@@ -73,8 +71,6 @@ class SchedulerController {
         println "params are ${params}"
 //        println "user has roles ${springSecurityService.currentUser.getAuthorities().authority}"
         List<Department> departmentList = Department.list()
-//        Department currentDepartment = Department.get(params.int('departmentID'))?: departmentList[0]
-//        Department currentDepartment = Department.get(params.int('departmentID'))?: Department.findByName(springSecurityService.currentUser)
         Department currentDepartment = Department.get(params.int('departmentID'))?: departmentList[0]
         List<Machine> machineList = [];
         Machine futureWork = null
@@ -86,7 +82,7 @@ class SchedulerController {
             futureWork = Machine.findByName(Constants.FUTRE_WORK_MACHINE_NAME+"_"+currentDepartment.name)
         }
 
-        render(view:  'main3', model: [departmentID:currentDepartment?.id,departmentList: departmentList, machineList: machineList, futureWork: futureWork ])
+        render(view:  'main3', model: [departmentID:currentDepartment?.id,departmentList: departmentList.sort{it.name}, machineList: machineList, futureWork: futureWork ])
 
     }
 
