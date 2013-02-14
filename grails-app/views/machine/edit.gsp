@@ -36,7 +36,7 @@
                                   <label for="department"><g:message code="machine.department.label" default="Department" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: machineInstance, field: 'department', 'errors')}">
-                                    <g:select name="department.id" from="${com.drawingboard.Department.list()}" optionKey="id" value="${machineInstance?.department?.id}"  />
+                                    <g:select name="department.id" from="${com.drawingboard.Department.list().sort{it.name}}" optionKey="id" value="${machineInstance?.department?.id}"  />
                                 </td>
                             </tr>
                         

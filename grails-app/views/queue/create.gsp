@@ -42,7 +42,7 @@
                                     <label for="machine"><g:message code="queue.machine.label" default="Machine" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: queueInstance, field: 'machine', 'errors')}">
-                                    <g:select name="machine.id" from="${com.drawingboard.Machine.list()}" optionKey="id" value="${queueInstance?.machine?.id}"  />
+                                    <g:select name="machine.id" from="${com.drawingboard.Machine.list().sort{it.name}}" optionKey="id" value="${queueInstance?.machine?.id}"  />
                                 </td>
                             </tr>
                         
