@@ -111,7 +111,7 @@ class SchedulerController {
                 println "\n::::after binding2::::"+queueCO
             }
 
-            if(queue.id!=null){
+            if(params["queue-${queue.id}"]!=null && queue.id!=null){
                 QueueBL bl = new QueueBL()
                 bl.saveQueue(queueCO)
             }
